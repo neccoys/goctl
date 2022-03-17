@@ -81,7 +81,10 @@ func DoGenProject(apiFile, dir, style string, i ...interface{}) error {
 		return err
 	}
 
-	modeName := strings.Split(rootPkg, "/"+api.Service.Name)
+	apiSlice := strings.Split(apiFile, "/")
+	apiPath := strings.Join(apiSlice[0:len(apiSlice)-1], "/")
+	modeName := strings.Split(rootPkg, "/"+apiPath)
+	//modeName := strings.Split(rootPkg, "/"+api.Service.Name)
 
 	logx.Must(genEtc(dir, cfg, api))
 	logx.Must(genConfig(dir, cfg, api))
