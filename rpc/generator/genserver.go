@@ -37,13 +37,13 @@ func New{{.server}}Server(svcCtx *svc.ServiceContext) *{{.server}}Server {
 }
 
 {{if .check}}
-func (s *TxPayServer) Check(ctx context.Context, req *grpc_health_v1.HealthCheckRequest) (*grpc_health_v1.HealthCheckResponse, error) {
+func (s *{{.server}}Server) Check(ctx context.Context, req *grpc_health_v1.HealthCheckRequest) (*grpc_health_v1.HealthCheckResponse, error) {
 	return &grpc_health_v1.HealthCheckResponse{
 		Status: grpc_health_v1.HealthCheckResponse_SERVING,
 	}, nil
 }
 
-func (s *TxPayServer) Watch(req *grpc_health_v1.HealthCheckRequest, w grpc_health_v1.Health_WatchServer) error {
+func (s *{{.server}}Server) Watch(req *grpc_health_v1.HealthCheckRequest, w grpc_health_v1.Health_WatchServer) error {
 	return nil
 }
 {{end}}
